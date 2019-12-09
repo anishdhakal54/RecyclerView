@@ -1,6 +1,8 @@
 package com.anish.recyclerview;
 
+
 public class Contacts {
+
     private String name;
     private String phoneNo;
     private int imageId;

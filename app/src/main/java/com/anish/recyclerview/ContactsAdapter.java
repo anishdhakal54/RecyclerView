@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,13 +11,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ContactViewHolder> {
-Context mContext;
-List<Contacts> contactsList;
+public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ContactViewHolder>{
+
+    Context context;
+    List<Contacts> contactsList;
 
     public ContactsAdapter(Context mContext, List<Contacts> contactsList) {
-        this.mContext = mContext;
+        this.context = mContext;
         this.contactsList = contactsList;
     }
 
@@ -31,10 +32,11 @@ List<Contacts> contactsList;
 
     @Override
     public void onBindViewHolder(@NonNull ContactViewHolder holder, int position) {
-Contacts contacts=contactsList.get(position);
-holder.ivkroos.setImageResource(contacts.getImageId());
-holder.tvContact.setText(contacts.getName());
-holder.tvPhone.setText(contacts.getPhoneNo());
+        Contacts contacts=contactsList.get(position);
+        holder.imageView.setImageResource(contacts.getImageId());
+        holder.textView.setText(contacts.getName());
+        holder.textView2.setText(contacts.getPhoneNo());
+
     }
 
     @Override
@@ -43,19 +45,15 @@ holder.tvPhone.setText(contacts.getPhoneNo());
     }
 
     public class ContactViewHolder extends RecyclerView.ViewHolder{
-        ImageView ivkroos;
+        CircleImageView imageView;
+        TextView textView, textView2;
 
-        TextView tvContact,tvPhone;
-        public ContactViewHolder(@NonNull View itemView) {
+        public ContactViewHolder(View itemView){
             super(itemView);
-
-            ivkroos=itemView.findViewById(R.id.imageView);
-            tvContact=itemView.findViewById(R.id.textView3);
-            tvPhone=itemView.findViewById(R.id.textView4);
+            imageView=itemView.findViewById(R.id.imageView);
+            textView=itemView.findViewById(R.id.textView);
+            textView2=itemView.findViewById(R.id.textView2);
         }
 
-
-
     }
-
 }

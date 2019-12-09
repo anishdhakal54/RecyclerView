@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        recyclerView=findViewById(R.id.recyclerview);
+        recyclerView=findViewById(R.id.recyclerView);
         List<Contacts> contactsList=new ArrayList<>();
         contactsList.add(new Contacts("Tony Kroos","00000",R.drawable.kroos));
         contactsList.add(new Contacts("Iker Casillas","00000",R.drawable.iker));
@@ -26,6 +26,6 @@ public class MainActivity extends AppCompatActivity {
 
         ContactsAdapter contactsAdapter=new ContactsAdapter(this,contactsList);
         recyclerView.setAdapter(contactsAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
     }
 }
